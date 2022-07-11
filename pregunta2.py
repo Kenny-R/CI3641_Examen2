@@ -1,7 +1,6 @@
-from unittest import result
 import ManejadorBooleano as mb
 msg1 = """Bienvenido al manejador de expresiones Boolenas Booly
-inses Disponibles:
+instruciones Disponibles:
     - EVAL <orden> <expr> : Permite evaluar la expresion <expr>, que esta
                             escrita de acuerdo a <orden>.
     - MOSTRAR <orden> <expr> : Permite imprimir la expresion <expr>, que esta
@@ -26,4 +25,4 @@ while True:
         print("Hasta luego")
         break
     else:
-        print("ins no reconocida.")
+        print("Instruccion no reconocida.")

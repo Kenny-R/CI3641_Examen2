@@ -1,4 +1,3 @@
-from multiprocessing.context import assert_spawning
 import ManejadorBooleano as mb
 
 hola = mb.ManejadorBooleano()
@@ -39,4 +38,7 @@ def test_mostrar():
     assert hola.mostrar(hola.crearArbol("POST true false => false | true false ^ | &")) == "(true => false) | false & (true | ^ false)"
 
     
+test_crearArbol()
+test_evaluacion()
+test_mostrar()
     
