@@ -7,6 +7,9 @@ class nodo:
 
 # Implementa un manejador de expresiones boolenas
 class ManejadorBooleano:    
+    
+    # Dado un string con una expresion Boolena correcta y un prefijo para indicar
+    # el orden de evaluacion, se determina el resultado de la expresion boleana.
     def evaluacion(self, instruccion:str)->bool:
         
         expresion = instruccion.split(" ")
@@ -37,6 +40,8 @@ class ManejadorBooleano:
         
         return stack.pop()
 
+    # A partir de un string con una expresion booleana correcta y un Prefijo para indicar
+    # el orden de evaluacion, se crea un arbol binario equivalente a la expresion booleana
     def crearArbol(self,instruccion):
         expresion = instruccion.split(" ")
         orden = expresion.pop(0)   
@@ -97,6 +102,9 @@ class ManejadorBooleano:
         
         return stack.pop()
     
+    # Dado un string con una expresion Boolena correcta y un prefijo para indicar
+    # el orden de evaluacion, se determina una version de la expresion boolena 
+    # escrita en orden in-fijo.
     def mostrar(self,arbol):
 
         if arbol.valor == "true" or arbol.valor == "false":

@@ -29,6 +29,8 @@ class manejadorDeTipos:
         self.structs =  {}
         self.unions = {}
     
+    # Permite crear un objeto de tipo atomico que representaria 
+    # un tipo del sistema de tipos.
     def crear_atomico(self,nombre,representacion,alineacion):
         if nombre not in self.atomicos.keys() and nombre not in self.structs.keys() and nombre not in self.unions.keys() :
             self.atomicos[nombre] = atomico(nombre,int(representacion),int(alineacion))
@@ -36,6 +38,9 @@ class manejadorDeTipos:
         else:
             print(f"Ya existe el tipo {nombre}") 
     
+    # Permite crear un objeto de tipo struct que representa un registro
+    # este registro almacenara su tamaño, alineacion y desperdicio basandose
+    # en 3 formas de almacenar un registro en memoria.
     def crear_struct(self,nombre:str,tipos:list):
         if nombre not in self.atomicos.keys() and nombre not in self.structs.keys() and nombre not in self.unions.keys():
             for i in tipos:
@@ -98,6 +103,10 @@ class manejadorDeTipos:
         else:
             print(f"ya existe el tipo {nombre}")
     
+    # Permite crear un objeto de tipo union que representa un tipo Union 
+    # este union almacenara su tamaño, alineacion y desperdicio basandose
+    # en 3 formas de almacenar un registro en memoria. Si el union no 
+    # contiene ningun registro las 3 versiones del union seran iguales
     def crear_union(self, nombre, tipos):
         if nombre in self.atomicos.keys() or nombre in self.structs.keys() or nombre in self.unions.keys():
             print(f"Ya existe el tipo {nombre}")
@@ -212,12 +221,16 @@ class manejadorDeTipos:
         tamanio += desperdiciado
         return (tamanio,desperdiciado)
     
+    # Permite rodar por todas las posiciones de una lista
+    # un valor especifico
     def combinacionesAux(self, e ,ls):
         yield [e, *ls]
         if ls:
             for i in self.combinacionesAux(e,ls[1:]):
                 yield [ls[0],*i]
 
+    # Permite calcular todas las posibles ordenes de
+    # una lista de elementos.
     def combinaciones(self,ls):    
         if ls:
             for m in self.combinaciones(ls[1:]):
@@ -226,6 +239,8 @@ class manejadorDeTipos:
         else:
             yield []
     
+    # Permite dar informacion sobre un tipo especifico del 
+    # sistema de tipos
     def descibir(self,nombre):
         if nombre in self.atomicos.keys():
             print(f"nombre: {self.atomicos[nombre].nombre}")
